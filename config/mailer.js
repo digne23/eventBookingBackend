@@ -15,6 +15,13 @@ function createMailer() {
         port,
         secure: port === 465,
         auth: { user, pass },
+        pool: true,
+        maxConnections: 1,
+        maxMessages: 10,
+        connectionTimeout: 20000, // 20s
+        greetingTimeout: 10000,   // 10s
+        socketTimeout: 20000,     // 20s
+        tls: { rejectUnauthorized: true },
     });
 
     return transporter;
