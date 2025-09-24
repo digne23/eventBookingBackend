@@ -10,10 +10,10 @@ const contactRoutes = require("./routes/contactRoutes");
 const userRoutes = require("./routes/userRoutes");
 const app = express();
 const allowedOrigins = [
-  process.env.FRONTEND_ORIGIN,
+  'https://eventlyglobal.vercel.app',
   'http://localhost:5173',
   'http://127.0.0.1:5173',
-].filter(Boolean);
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
