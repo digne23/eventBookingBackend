@@ -17,9 +17,13 @@ exports.createEvent = async (req, res) => {
 };
 
 exports.getEventById = async (req, res) => {
-    const event = await Event.findById(req.params.id);
-    if(event) res.json(event);
-    else res.status(404).json({ message: 'Event not found' });
+    try {
+        const event = await Event.findById(req.params.id);
+        if(event) res.json(event);
+        else res.status(404).json({ message: 'Event not found' });
+    } catch (e) {
+        return res.status(400).json({ message: 'Invalid event id' });
+    }
 };
 
 exports.updateEvent = async (req, res) => {
