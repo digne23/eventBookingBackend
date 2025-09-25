@@ -62,8 +62,9 @@ exports.sendBookingTicket = async (req, res) => {
         const user = booking.user;
         console.log('Sending to:', user.email);
         console.log('Event title:', event.title);
+
         
-        await transporter.sendMail({
+        const result = await transporter.sendMail({
             from: process.env.SMTP_FROM || process.env.SMTP_USER,
             to: user.email,
             subject: `Your Event Ticket - ${event.title}`,
@@ -121,7 +122,9 @@ exports.sendBookingTicket = async (req, res) => {
               </table>
             `
         });
-        console.log('Email sent successfully');
+
+        console.log("Email sending result: ", result);
+
         
         res.json({ message: 'Ticket sent to your email' });
     } catch (err) {

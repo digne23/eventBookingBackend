@@ -13,15 +13,15 @@ function createMailer() {
     const transporter = nodemailer.createTransport({
         host,
         port,
-        secure: port === 465,
+        // secure: port === 465,
         auth: { user, pass },
-        pool: true,
-        maxConnections: 1,
-        maxMessages: 10,
-        connectionTimeout: 20000,
-        greetingTimeout: 10000,
-        socketTimeout: 20000,
-        tls: { rejectUnauthorized: true },
+        // pool: true,
+        // maxConnections: 1,
+        // maxMessages: 10,
+        // connectionTimeout: 20000,
+        // greetingTimeout: 10000,
+        // socketTimeout: 20000,
+        // tls: { rejectUnauthorized: false },
     });
 
     return transporter;
